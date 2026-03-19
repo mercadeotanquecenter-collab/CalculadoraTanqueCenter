@@ -455,19 +455,19 @@
     </a>
 
     <div class="sucursales">
-      <a href="https://wa.me/50763863251" target="_blank" class="suc-item suc-link">
+      <a id="suc-chorrera" href="#" target="_blank" class="suc-item suc-link">
         <div class="suc-name">📍 La Chorrera</div>
         <div class="suc-num">6386-3251</div>
       </a>
-      <a href="https://wa.me/50764206814" target="_blank" class="suc-item suc-link">
+      <a id="suc-panama" href="#" target="_blank" class="suc-item suc-link">
         <div class="suc-name">📍 Panamá</div>
         <div class="suc-num">6420-6814</div>
       </a>
-      <a href="https://wa.me/50769234449" target="_blank" class="suc-item suc-link">
+      <a id="suc-santiago" href="#" target="_blank" class="suc-item suc-link">
         <div class="suc-name">📍 Santiago</div>
         <div class="suc-num">6923-4449</div>
       </a>
-      <a href="https://wa.me/50764745304" target="_blank" class="suc-item suc-link">
+      <a id="suc-chiriqui" href="#" target="_blank" class="suc-item suc-link">
         <div class="suc-name">📍 Chiriquí</div>
         <div class="suc-num">6474-5304</div>
       </a>
@@ -610,6 +610,17 @@ function calcular() {
   const unitStr = currentUnit === 'galones' ? `${(minima * L_TO_GAL).toFixed(1)} galones` : `${fmt(minima)} litros`;
   const msg = `Hola! Usé la calculadora de Tanque Center y necesito un tanque de aprox. ${unitStr} para ${p} personas con ${d} días de reserva. ¿Me pueden asesorar?`;
   document.getElementById('wha-link').href = `https://wa.me/50761914949?text=${encodeURIComponent(msg)}`;
+
+  // Actualizar links de cada sucursal con el mensaje del resultado
+  const sucursales = {
+    'suc-chorrera':  '50763863251',
+    'suc-panama':    '50764206814',
+    'suc-santiago':  '50769234449',
+    'suc-chiriqui':  '50764745304'
+  };
+  Object.entries(sucursales).forEach(([id, numero]) => {
+    document.getElementById(id).href = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+  });
 }
 
 ['personas','dias'].forEach(id => {
